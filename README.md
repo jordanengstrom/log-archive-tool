@@ -1,5 +1,4 @@
 # log-archive
-
 A small Go CLI tool to archive log files from a directory into a timestamped tar.gz archive and record the operation in a history log.
 
 ## What it does
@@ -110,3 +109,5 @@ Possible improvements:
 - Add filters (extensions, age, size).
 - Add dry-run mode.
 - Integrate with logrotate, systemd timers, or cron for scheduled execution.
+
+https://roadmap.sh/projects/log-archive-tool
