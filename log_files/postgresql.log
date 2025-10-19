@@ -1,0 +1,44 @@
+2025-10-19 17:58:01.123 UTC [8421] LOG:  connection received: host=192.0.2.12 port=54321
+2025-10-19 17:58:01.125 UTC [8421] LOG:  connection authorized: user=appuser database=appdb
+2025-10-19 17:58:02.432 UTC [8421] LOG:  duration: 12.345 ms  statement: SELECT id, name FROM products WHERE id = 123;
+2025-10-19 17:58:05.001 UTC [8422] LOG:  connection received: host=198.51.100.23 port=58714
+2025-10-19 17:58:05.004 UTC [8422] LOG:  connection authorized: user=readonly database=appdb
+2025-10-19 17:58:05.221 UTC [8422] LOG:  duration: 239.881 ms  statement: SELECT COUNT(*) FROM orders WHERE created_at > '2025-10-18';
+2025-10-19 17:58:07.788 UTC [8423] ERROR:  canceling statement due to statement timeout
+2025-10-19 17:58:07.788 UTC [8423] STATEMENT:  UPDATE large_table SET processed = true WHERE processed = false;
+2025-10-19 17:58:10.999 UTC [8419] LOG:  checkpoint starting: time
+2025-10-19 17:58:11.154 UTC [8419] LOG:  checkpoint complete: wrote 128 buffers (1.5%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.011 s, sync=0.008 s, total=0.026 s
+2025-10-19 17:58:15.345 UTC [8424] LOG:  duration: 3.212 ms  statement: INSERT INTO audit (user_id, action) VALUES (345, 'login');
+2025-10-19 17:58:22.001 UTC [8425] WARNING:  there is already a transaction in progress
+2025-10-19 17:58:22.002 UTC [8425] STATEMENT:  BEGIN;
+2025-10-19 17:58:24.410 UTC [8426] LOG:  autovacuum launcher started
+2025-10-19 17:58:30.990 UTC [8427] LOG:  duration: 1450.678 ms  statement: SELECT * FROM reports WHERE generated_at > now() - interval '7 days' ORDER BY generated_at DESC LIMIT 50;
+2025-10-19 17:58:35.123 UTC [8428] ERROR:  duplicate key value violates unique constraint "users_email_key"
+2025-10-19 17:58:35.123 UTC [8428] DETAIL:  Key (email)=(user@example.com) already exists.
+2025-10-19 17:58:35.124 UTC [8428] STATEMENT:  INSERT INTO users (email, name) VALUES ('user@example.com', 'Test User');
+2025-10-19 17:58:40.000 UTC [8429] LOG:  connection received: host=10.2.3.14 port=51234
+2025-10-19 17:58:40.003 UTC [8429] LOG:  connection authorized: user=ops database=postgres
+2025-10-19 17:58:41.512 UTC [8429] LOG:  duration: 56.001 ms  statement: VACUUM ANALYZE VERBOSE public.orders;
+2025-10-19 17:58:45.678 UTC [8430] FATAL:  password authentication failed for user "invalid_user"
+2025-10-19 17:58:45.678 UTC [8430] DETAIL:  Role "invalid_user" does not exist.
+2025-10-19 17:58:50.210 UTC [8431] LOG:  duration: 0.987 ms  statement: SELECT 1
+2025-10-19 17:58:55.333 UTC [8432] LOG:  duration: 12034.552 ms  statement: /* slow */ SELECT * FROM events WHERE details LIKE '%error%' ORDER BY occurred_at DESC LIMIT 100;
+2025-10-19 17:59:01.000 UTC [8419] LOG:  checkpoint starting: time
+2025-10-19 17:59:01.200 UTC [8419] LOG:  checkpoint complete: wrote 1024 buffers (12.3%); 2 WAL file(s) added, 0 removed, 0 recycled; write=0.189 s, sync=0.142 s, total=0.356 s
+2025-10-19 17:59:12.445 UTC [8433] LOG:  connection authorized: user=replicator database=replication
+2025-10-19 17:59:12.447 UTC [8433] LOG:  received standby response
+2025-10-19 17:59:15.999 UTC [8434] LOG:  autovacuum: VACUUM public.sessions: index scans: 0
+2025-10-19 17:59:20.100 UTC [8435] ERROR:  could not serialize access due to read/write dependencies among transactions
+2025-10-19 17:59:20.101 UTC [8435] STATEMENT:  UPDATE accounts SET balance = balance - 100 WHERE id = 555;
+2025-10-19 17:59:25.250 UTC [8436] LOG:  duration: 2.450 ms  statement: PREPARE TRANSACTION 'tx_7a6b5c';
+2025-10-19 17:59:30.360 UTC [8437] LOG:  duration: 8.902 ms  statement: SELECT pg_is_in_recovery();
+2025-10-19 17:59:35.470 UTC [8438] WARNING:  terminating connection because of crash of another process
+2025-10-19 17:59:35.471 UTC [8438] DETAIL:  The postmaster has commanded this server process to roll back the current transaction and exit, connection matched by: host=192.0.2.33 port=52233
+2025-10-19 17:59:40.580 UTC [8439] LOG:  database system is ready to accept connections
+2025-10-19 17:59:45.690 UTC [8440] LOG:  duration: 0.300 ms  statement: SELECT count(*) FROM migrations WHERE applied = true;
+2025-10-19 17:59:50.800 UTC [8441] ERROR:  out of memory for query
+2025-10-19 17:59:50.800 UTC [8441] HINT:  Work_mem is probably too small for this query.
+2025-10-19 17:59:55.912 UTC [8442] LOG:  connection authorized: user=backup database=postgres
+2025-10-19 18:00:00.001 UTC [8442] LOG:  duration: 53212.004 ms  statement: COPY (SELECT * FROM big_export) TO STDOUT
+2025-10-19 18:00:05.123 UTC [8443] LOG:  autovacuum launcher shutting down
+2025-10-19 18:00:07.456 UTC [8444] LOG:  background worker "logical replication launcher" (PID 8445) exited with exit code 0

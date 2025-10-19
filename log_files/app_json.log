@@ -1,0 +1,90 @@
+{"timestamp":"2025-10-19T15:58:21.123Z","level":"INFO","service":"orders","message":"received create order request","trace_id":"f2e9b4d6","user_id":345,"payload_size":482}
+{"timestamp":"2025-10-19T15:58:21.455Z","level":"DEBUG","service":"orders","message":"validated items","trace_id":"f2e9b4d6","items_count":3}
+{"timestamp":"2025-10-19T15:58:22.101Z","level":"INFO","service":"payments","message":"initiating payment intent","trace_id":"f2e9b4d6","order_id":9123,"amount_cents":129900,"currency":"USD"}
+{"timestamp":"2025-10-19T15:58:22.412Z","level":"ERROR","service":"payments","message":"payment gateway timeout","trace_id":"f2e9b4d6","order_id":9123,"error":"GatewayTimeout","duration_ms":30000}
+{"timestamp":"2025-10-19T15:58:22.789Z","level":"WARN","service":"orders","message":"fallback to manual payment","trace_id":"f2e9b4d6","order_id":9123}
+{"timestamp":"2025-10-19T15:59:03.001Z","level":"INFO","service":"auth","message":"user login","trace_id":"a1c3d5f7","user_id":678,"method":"oauth"}
+{"timestamp":"2025-10-19T15:59:03.203Z","level":"INFO","service":"auth","message":"generated session","trace_id":"a1c3d5f7","session_id":"s_9a8b7c6"}
+{"timestamp":"2025-10-19T15:59:04.512Z","level":"DEBUG","service":"api-gateway","message":"request forwarded","trace_id":"a1c3d5f7","upstream":"orders","latency_ms":18}
+{"timestamp":"2025-10-19T15:59:05.100Z","level":"INFO","service":"orders","message":"order persisted","trace_id":"f2e9b4d6","order_id":9123}
+{"timestamp":"2025-10-19T15:59:05.876Z","level":"INFO","service":"notifications","message":"email queued","trace_id":"f2e9b4d6","template":"order_confirmation","to":"user@example.com"}
+{"timestamp":"2025-10-19T15:59:06.002Z","level":"DEBUG","service":"worker","message":"job started","job":"send-email","job_id":"job_0001","trace_id":"f2e9b4d6"}
+{"timestamp":"2025-10-19T15:59:06.412Z","level":"INFO","service":"worker","message":"job completed","job":"send-email","job_id":"job_0001","trace_id":"f2e9b4d6","duration_ms":342}
+{"timestamp":"2025-10-19T15:59:06.512Z","level":"INFO","service":"orders","message":"order completed","trace_id":"f2e9b4d6","order_id":9123,"status":"completed"}
+{"timestamp":"2025-10-19T15:59:07.001Z","level":"INFO","service":"metrics","message":"ingested event","event":"order_created","count":1}
+{"timestamp":"2025-10-19T15:59:11.200Z","level":"INFO","service":"auth","message":"user login","trace_id":"b4d6c2a8","user_id":345,"method":"password"}
+{"timestamp":"2025-10-19T15:59:11.396Z","level":"WARN","service":"auth","message":"failed password attempt","trace_id":"b4d6c2a8","user_id":345,"ip":"203.0.113.45"}
+{"timestamp":"2025-10-19T15:59:12.000Z","level":"INFO","service":"auth","message":"user locked","trace_id":"b4d6c2a8","user_id":345,"reason":"too_many_attempts"}
+{"timestamp":"2025-10-19T15:59:12.900Z","level":"DEBUG","service":"scheduler","message":"task scheduled","task":"cleanup_sessions","run_at":"2025-10-19T16:00:00Z"}
+{"timestamp":"2025-10-19T15:59:13.111Z","level":"INFO","service":"cleanup","message":"expired sessions removed","count":12}
+{"timestamp":"2025-10-19T15:59:15.999Z","level":"INFO","service":"search","message":"index updated","trace_id":"c7e8f9a0","index":"products_v2"}
+{"timestamp":"2025-10-19T15:59:17.010Z","level":"ERROR","service":"search","message":"indexing failed","trace_id":"c7e8f9a0","error":"ConnectionRefused","upstream":"elasticsearch","attempt":1}
+{"timestamp":"2025-10-19T15:59:17.210Z","level":"INFO","service":"search","message":"retrying index","trace_id":"c7e8f9a0","attempt":2}
+{"timestamp":"2025-10-19T15:59:17.617Z","level":"INFO","service":"search","message":"indexing succeeded","trace_id":"c7e8f9a0","index":"products_v2"}
+{"timestamp":"2025-10-19T15:59:18.000Z","level":"DEBUG","service":"cache","message":"cache miss","key":"product:1234"}
+{"timestamp":"2025-10-19T15:59:18.100Z","level":"INFO","service":"catalog","message":"fetched product","product_id":1234,"trace_id":"d1e2f3a4"}
+{"timestamp":"2025-10-19T15:59:20.200Z","level":"INFO","service":"web","message":"rendered homepage","trace_id":"e4f5a6b7","duration_ms":121}
+{"timestamp":"2025-10-19T15:59:21.300Z","level":"ERROR","service":"web","message":"template rendering error","trace_id":"e4f5a6b7","error":"NullPointerException","template":"home_v2.html"}
+{"timestamp":"2025-10-19T15:59:22.400Z","level":"INFO","service":"alerts","message":"rate limit reached","trace_id":"z9y8x7w6","key":"api:v1:search","limit":100,"period_seconds":60}
+{"timestamp":"2025-10-19T15:59:23.500Z","level":"DEBUG","service":"db","message":"connection acquired","conn_id":"db-conn-12"}
+{"timestamp":"2025-10-19T15:59:23.800Z","level":"INFO","service":"db","message":"query executed","query":"SELECT * FROM users WHERE id = $1","duration_ms":3}
+{"timestamp":"2025-10-19T15:59:24.900Z","level":"WARN","service":"cache","message":"slow redis command","duration_ms":128,"command":"HGETALL"}
+{"timestamp":"2025-10-19T15:59:25.100Z","level":"INFO","service":"worker","message":"scheduled job enqueued","job":"recalculate_metrics","scheduled_at":"2025-10-19T16:05:00Z"}
+{"timestamp":"2025-10-19T15:59:26.000Z","level":"INFO","service":"metrics","message":"ingested event","event":"user_login","count":1}
+{"timestamp":"2025-10-19T15:59:26.400Z","level":"DEBUG","service":"auth","message":"token introspection","token_id":"tk_abcdef"}
+{"timestamp":"2025-10-19T15:59:27.111Z","level":"ERROR","service":"payments","message":"invalid card number","trace_id":"x1y2z3q4","order_id":9124,"error":"CardDeclined"}
+{"timestamp":"2025-10-19T15:59:28.222Z","level":"INFO","service":"notifications","message":"push notification sent","target":"mobile","user_id":678}
+{"timestamp":"2025-10-19T15:59:29.333Z","level":"DEBUG","service":"logger","message":"rotated log file","path":"/var/log/app/app_json.log","size_bytes":1048576}
+{"timestamp":"2025-10-19T15:59:30.444Z","level":"INFO","service":"deploy","message":"deployment started","version":"2025.10.19-2","initiator":"ci"}
+{"timestamp":"2025-10-19T15:59:31.555Z","level":"INFO","service":"deploy","message":"deployment finished","version":"2025.10.19-2","duration_ms":34234}
+{"timestamp":"2025-10-19T15:59:32.666Z","level":"DEBUG","service":"observability","message":"sampled span","span_id":"s_9d8c7b6","trace_id":"a1c3d5f7"}
+{"timestamp":"2025-10-19T15:59:33.777Z","level":"INFO","service":"billing","message":"invoice generated","invoice_id":"inv_20251019_0001","amount_cents":1999}
+{"timestamp":"2025-10-19T15:59:34.888Z","level":"ERROR","service":"billing","message":"failed to send invoice email","invoice_id":"inv_20251019_0001","error":"SmtpTimeout","attempts":3}
+{"timestamp":"2025-10-19T15:59:35.999Z","level":"INFO","service":"cron","message":"daily reports job completed","duration_ms":4231}
+{"timestamp":"2025-10-19T15:59:36.100Z","level":"WARN","service":"security","message":"suspicious token usage","ip":"198.51.100.23","user_id":null}
+{"timestamp":"2025-10-19T15:59:37.200Z","level":"DEBUG","service":"cache","message":"cache populate","keys_added":45}
+{"timestamp":"2025-10-19T15:59:38.300Z","level":"INFO","service":"metrics","message":"ingested event","event":"cron_completed","count":1}
+{"timestamp":"2025-10-19T15:59:40.400Z","level":"INFO","service":"auth","message":"password reset requested","user_id":912,"method":"email"}
+{"timestamp":"2025-10-19T15:59:41.500Z","level":"DEBUG","service":"worker","message":"retrying job","job_id":"job_0002","attempt":2}
+{"timestamp":"2025-10-19T15:59:42.600Z","level":"ERROR","service":"worker","message":"job failed","job_id":"job_0002","error":"UnhandledPromiseRejection","stack":"Error: something went wrong\n at processJob (/app/worker.js:42:15)"}
+{"timestamp":"2025-10-19T15:59:43.700Z","level":"INFO","service":"worker","message":"job requeued","job_id":"job_0002","next_attempt":"2025-10-19T16:00:43Z"}
+{"timestamp":"2025-10-19T15:59:44.800Z","level":"INFO","service":"search","message":"query executed","query":"widgets+blue","duration_ms":14}
+{"timestamp":"2025-10-19T15:59:45.900Z","level":"DEBUG","service":"db","message":"transaction commit","tx_id":"tx_7a6b5c"}
+{"timestamp":"2025-10-19T15:59:46.010Z","level":"INFO","service":"auth","message":"oauth token refreshed","user_id":345}
+{"timestamp":"2025-10-19T15:59:47.120Z","level":"WARN","service":"orders","message":"order processing delayed","order_id":9125,"reason":"inventory_lock","delay_seconds":120}
+{"timestamp":"2025-10-19T15:59:48.230Z","level":"INFO","service":"monitor","message":"external endpoint healthy","endpoint":"https://api.external-service.local/healthz"}
+{"timestamp":"2025-10-19T15:59:49.340Z","level":"ERROR","service":"monitor","message":"endpoint returned 500","endpoint":"https://api.external-service.local/healthz","status":500}
+{"timestamp":"2025-10-19T15:59:50.450Z","level":"INFO","service":"notifications","message":"sms queued","to":"+15551234567","provider":"twilio"}
+{"timestamp":"2025-10-19T15:59:51.560Z","level":"DEBUG","service":"scheduler","message":"invoking cron job","job":"sync_external"}
+{"timestamp":"2025-10-19T15:59:52.670Z","level":"INFO","service":"sync","message":"external sync completed","records_processed":128}
+{"timestamp":"2025-10-19T15:59:53.780Z","level":"INFO","service":"web","message":"request finished","path":"/profile","status":200,"duration_ms":88}
+{"timestamp":"2025-10-19T15:59:54.890Z","level":"ERROR","service":"db","message":"deadlock detected","query":"UPDATE accounts SET balance = balance - $1 WHERE id = $2","details":"waiting for lock"}
+{"timestamp":"2025-10-19T15:59:55.001Z","level":"INFO","service":"maintenance","message":"starting maintenance window","window":"2025-10-19T20:00:00Z"}
+{"timestamp":"2025-10-19T15:59:56.112Z","level":"DEBUG","service":"observability","message":"span ended","span_id":"s_9d8c7b6"}
+{"timestamp":"2025-10-19T15:59:57.223Z","level":"INFO","service":"billing","message":"payment settled","order_id":9123,"amount_cents":129900}
+{"timestamp":"2025-10-19T15:59:58.334Z","level":"WARN","service":"security","message":"deprecated cipher detected","client":"OpenSSL/1.1.1"}
+{"timestamp":"2025-10-19T15:59:59.445Z","level":"INFO","service":"api-gateway","message":"request complete","trace_id":"a1c3d5f7","status":200,"path":"/api/v1/users"}
+{"timestamp":"2025-10-19T16:00:00.556Z","level":"DEBUG","service":"metrics","message":"flush metrics","count":342}
+{"timestamp":"2025-10-19T16:00:01.667Z","level":"INFO","service":"cdn","message":"purged cache","pattern":"/assets/*","initiator":"deploy"}
+{"timestamp":"2025-10-19T16:00:02.778Z","level":"ERROR","service":"cdn","message":"purge failed for object","object":"/assets/js/bundle.9c8.js","error":"AccessDenied"}
+{"timestamp":"2025-10-19T16:00:03.889Z","level":"INFO","service":"auth","message":"sso callback received","provider":"google","trace_id":"k3l4m5n6"}
+{"timestamp":"2025-10-19T16:00:04.990Z","level":"INFO","service":"auth","message":"user created","user_id":1023,"method":"sso"}
+{"timestamp":"2025-10-19T16:00:06.001Z","level":"DEBUG","service":"worker","message":"constructed payload","size_bytes":732}
+{"timestamp":"2025-10-19T16:00:07.112Z","level":"INFO","service":"worker","message":"job finished","job":"recalculate_metrics","duration_ms":12012}
+{"timestamp":"2025-10-19T16:00:08.223Z","level":"ERROR","service":"payments","message":"refund failed","refund_id":"rf_0003","error":"AccountNotFound"}
+{"timestamp":"2025-10-19T16:00:09.334Z","level":"INFO","service":"notifications","message":"in-app notice created","user_id":345,"notice_type":"billing"}
+{"timestamp":"2025-10-19T16:00:10.445Z","level":"DEBUG","service":"db","message":"connection released","conn_id":"db-conn-12"}
+{"timestamp":"2025-10-19T16:00:11.556Z","level":"INFO","service":"metrics","message":"ingested event","event":"refund_processed","count":1}
+{"timestamp":"2025-10-19T16:00:12.667Z","level":"WARN","service":"auth","message":"legacy token used","token_id":"legacy_xxx","user_id":678}
+{"timestamp":"2025-10-19T16:00:13.778Z","level":"INFO","service":"audit","message":"permission granted","actor_id":1,"target_user":345,"permission":"admin"}
+{"timestamp":"2025-10-19T16:00:14.889Z","level":"ERROR","service":"audit","message":"failed to write audit event","error":"DiskQuotaExceeded"}
+{"timestamp":"2025-10-19T16:00:15.990Z","level":"INFO","service":"backup","message":"snapshot completed","snapshot_id":"snap-20251019-160015","size_mb":5120}
+{"timestamp":"2025-10-19T16:00:17.101Z","level":"INFO","service":"health","message":"all services healthy"}
+{"timestamp":"2025-10-19T16:00:18.212Z","level":"DEBUG","service":"logger","message":"batch flushed","entries":120}
+{"timestamp":"2025-10-19T16:00:19.323Z","level":"INFO","service":"web","message":"ws connection opened","user_id":345,"connection_id":"ws_77a"}
+{"timestamp":"2025-10-19T16:00:20.434Z","level":"ERROR","service":"web","message":"ws connection error","connection_id":"ws_77a","error":"EPIPE"}
+{"timestamp":"2025-10-19T16:00:21.545Z","level":"INFO","service":"notification-delivery","message":"provider response","provider":"twilio","status":"accepted"}
+{"timestamp":"2025-10-19T16:00:22.656Z","level":"WARN","service":"scheduler","message":"missed schedule","job":"cleanup_old_exports"}
+{"timestamp":"2025-10-19T16:00:23.767Z","level":"INFO","service":"ingest","message":"file processed","file":"uploads/2025-10-19/dataset.csv","rows":1200}
+{"timestamp":"2025-10-19T16:00:24.878Z","level":"ERROR","service":"ingest","message":"invalid row encountered","row_number":987,"error":"InvalidFormat"}
+{"timestamp":"2025-10-19T16:00:25.989Z","level":"INFO","service":"ingest","message":"ingest completed","file":"uploads/2025-10-19/dataset.csv","rows_processed":1199}

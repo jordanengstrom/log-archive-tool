@@ -1,0 +1,49 @@
+Oct 19 15:58:01 host1 sshd[2345]: Accepted password for engstrom from 198.51.100.23 port 54321 ssh2
+Oct 19 15:58:05 host1 sudo:    engstrom : TTY=pts/1 ; PWD=/home/engstrom ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+Oct 19 15:58:05 host1 sshd[2345]: pam_unix(sshd:session): session opened for user engstrom by (uid=0)
+Oct 19 15:58:12 host1 sshd[3421]: Failed password for invalid user admin from 203.0.113.99 port 40212 ssh2
+Oct 19 15:58:12 host1 sshd[3421]: Failed password for invalid user admin from 203.0.113.99 port 40212 ssh2
+Oct 19 15:58:12 host1 sshd[3421]: Connection closed by 203.0.113.99 [preauth]
+Oct 19 15:58:20 host1 sudo: pam_unix(sudo:session): session closed for user root
+Oct 19 15:59:01 host1 CRON[4567]: (root) CMD (    run-parts /etc/cron.hourly)
+Oct 19 15:59:15 host1 sshd[2345]: Received disconnect from 198.51.100.23 port 54321:11: disconnected by user
+Oct 19 15:59:16 host1 sshd[4568]: Accepted publickey for deployer from 192.0.2.47 port 62100 ssh2: RSA SHA256:abcdef...
+Oct 19 15:59:16 host1 sudo:    deployer : TTY=pts/2 ; PWD=/home/deployer ; USER=root ; COMMAND=/usr/bin/systemctl restart app
+Oct 19 15:59:16 host1 sshd[4568]: pam_unix(sshd:session): session opened for user deployer by (uid=0)
+Oct 19 15:59:30 host1 kernel: [123456.789012] audit: type=1100 audit(1697732370.789:456): pid=4568 uid=1001 auid=1001 ses=2 msg='op=login id=1001 exe="/usr/sbin/sshd" hostname=192.0.2.47 addr=192.0.2.47 terminal=ssh res=success'
+Oct 19 15:59:45 host1 sshd[3423]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=203.0.113.99
+Oct 19 15:59:46 host1 sshd[3423]: Failed password for root from 203.0.113.99 port 40321 ssh2
+Oct 19 15:59:46 host1 sshd[3423]: Connection closed by 203.0.113.99 [preauth]
+Oct 19 16:00:00 host1 systemd-logind[1234]: New session 5 of user deployer.
+Oct 19 16:00:01 host1 sudo:    engstrom : TTY=pts/3 ; PWD=/home/engstrom ; USER=root ; COMMAND=/usr/bin/journalctl -u app.service
+Oct 19 16:00:02 host1 sshd[7890]: Accepted password for ops from 10.2.3.14 port 51234 ssh2
+Oct 19 16:00:02 host1 sshd[7890]: pam_unix(sshd:session): session opened for user ops by (uid=0)
+Oct 19 16:00:05 host1 sshd[7890]: Received disconnect from 10.2.3.14 port 51234:11: disconnected by user
+Oct 19 16:00:12 host1 sshd[7901]: Failed password for invalid user test from 203.0.113.61 port 52222 ssh2
+Oct 19 16:00:12 host1 sshd[7901]: Failed password for invalid user test from 203.0.113.61 port 52222 ssh2
+Oct 19 16:00:12 host1 sshd[7901]: connection closed by 203.0.113.61 [preauth]
+Oct 19 16:00:20 host1 sudo:    deployer : TTY=pts/2 ; PWD=/home/deployer ; USER=root ; COMMAND=/usr/bin/systemctl status app
+Oct 19 16:00:21 host1 sshd[2345]: pam_unix(sshd:session): session closed for user engstrom
+Oct 19 16:00:25 host1 CRON[4578]: (root) CMD (test -x /usr/sbin/anacron || (cd / && run-parts --report /etc/cron.daily))
+Oct 19 16:00:30 host1 sshd[3456]: error: maximum authentication attempts exceeded for invalid user oracle from 203.0.113.80 port 43100 ssh2 [preauth]
+Oct 19 16:00:47 host1 sshd[3456]: Connection closed by 203.0.113.80 [preauth]
+Oct 19 16:00:50 host1 systemd[1]: Starting Daily apt download activities...
+Oct 19 16:00:51 host1 kernel: [123467.890123] audit: type=1101 audit(1697732451.890:457): pid=3456 uid=0 auid=4294967295 ses=4294967295 msg='op=failed-login id=0 exe="/usr/sbin/sshd" hostname=? addr=203.0.113.80 terminal=? res=failed'
+Oct 19 16:01:05 host1 sshd[5678]: Accepted password for monitor from 192.0.2.12 port 33211 ssh2
+Oct 19 16:01:05 host1 sshd[5678]: pam_unix(sshd:session): session opened for user monitor by (uid=0)
+Oct 19 16:01:20 host1 sudo: pam_unix(sudo:session): session closed for user deployer
+Oct 19 16:01:29 host1 sshd[5678]: Received disconnect from 192.0.2.12 port 33211:11: disconnected by user
+Oct 19 16:01:30 host1 sshd[6789]: Failed password for invalid user guest from 198.51.100.150 port 37722 ssh2
+Oct 19 16:01:30 host1 sshd[6789]: Failed password for invalid user guest from 198.51.100.150 port 37722 ssh2
+Oct 19 16:01:30 host1 sshd[6789]: Connection closed by 198.51.100.150 [preauth]
+Oct 19 16:01:45 host1 CRON[4589]: (root) CMD (run-parts /etc/cron.daily)
+Oct 19 16:01:50 host1 sudo:    engstrom : TTY=pts/3 ; PWD=/home/engstrom ; USER=root ; COMMAND=/usr/bin/apt-get update
+Oct 19 16:02:01 host1 sshd[7891]: Accepted publickey for backup from 192.0.2.33 port 52233 ssh2
+Oct 19 16:02:01 host1 sshd[7891]: pam_unix(sshd:session): session opened for user backup by (uid=0)
+Oct 19 16:02:07 host1 sudo: pam_unix(sudo:session): session closed for user root
+Oct 19 16:02:12 host1 sshd[8902]: Failed password for root from 203.0.113.99 port 40444 ssh2
+Oct 19 16:02:12 host1 sshd[8902]: Failed password for root from 203.0.113.99 port 40444 ssh2
+Oct 19 16:02:12 host1 sshd[8902]: Connection closed by 203.0.113.99 [preauth]
+Oct 19 16:02:30 host1 systemd[1]: Started Session 6 of user backup.
+Oct 19 16:02:35 host1 sshd[7891]: Received disconnect from 192.0.2.33 port 52233:11: disconnected by user
+Oct 19 16:02:40 host1 kernel: [123479.012345] audit: type=1105 audit(1697732560.012:458): pid=8902 uid=0 auid=4294967295 ses=4294967295 msg='op=failed-login id=0 exe="/usr/sbin/sshd" hostname=? addr=203.0.113.99 terminal=? res=failed'

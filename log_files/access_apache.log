@@ -1,0 +1,122 @@
+127.0.0.1 - - [19/Oct/2025:15:59:58 +0000] "GET /health HTTP/1.1" 200 12 "-" "curl/7.68.0" 0.002
+198.51.100.23 - - [19/Oct/2025:15:59:59 +0000] "GET /api/v1/users HTTP/1.1" 200 4532 "https://example.com/app" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15" 0.128
+203.0.113.45 - - [19/Oct/2025:16:00:00 +0000] "POST /api/v1/login HTTP/1.1" 302 154 "https://example.com/login" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.210
+192.0.2.12 - - [19/Oct/2025:16:00:01 +0000] "GET /static/css/app.ab12.css HTTP/1.1" 200 10234 "https://example.com/" "Mozilla/5.0 (X11; Linux x86_64)" 0.011
+10.1.5.9 - - [19/Oct/2025:16:00:02 +0000] "GET /api/v1/orders?status=pending&page=2 HTTP/1.1" 200 8742 "-" "python-requests/2.31.0" 0.355
+198.51.100.23 - - [19/Oct/2025:16:00:03 +0000] "GET /api/v1/users/345 HTTP/2.0" 200 278 "https://example.com/app" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.084
+203.0.113.56 - - [19/Oct/2025:16:00:04 +0000] "GET /api/v1/product/987/image HTTP/1.1" 304 0 "-" "ELB-HealthChecker/2.0" 0.005
+192.0.2.33 - - [19/Oct/2025:16:00:05 +0000] "DELETE /api/v1/cart/42 HTTP/1.1" 204 0 "https://example.com/checkout" "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" 0.143
+203.0.113.45 - - [19/Oct/2025:16:00:06 +0000] "GET /dashboard HTTP/1.1" 200 22438 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.322
+198.51.100.100 - - [19/Oct/2025:16:00:07 +0000] "POST /api/v1/checkout HTTP/1.1" 500 512 "-" "curl/7.79.1" 1.210
+127.0.0.1 - - [19/Oct/2025:16:00:08 +0000] "GET /metrics HTTP/1.1" 200 823 "-" "Prometheus/2.41.0" 0.009
+203.0.113.12 - - [19/Oct/2025:16:00:09 +0000] "GET /api/v1/search?q=widgets HTTP/1.1" 200 13456 "https://example.com/" "Mozilla/5.0 (X11; Linux x86_64)" 0.067
+198.51.100.23 - - [19/Oct/2025:16:00:10 +0000] "PUT /api/v1/users/345 HTTP/1.1" 204 0 "https://example.com/profile" "python-requests/2.31.0" 0.238
+203.0.113.77 - - [19/Oct/2025:16:00:11 +0000] "GET /favicon.ico HTTP/1.1" 200 150 "https://example.com/" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" 0.003
+192.0.2.90 - - [19/Oct/2025:16:00:12 +0000] "GET /assets/logo.png HTTP/1.1" 200 5423 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.012
+10.0.0.5 - - [19/Oct/2025:16:00:13 +0000] "POST /api/v1/webhook/payment HTTP/1.1" 202 64 "-" "Stripe/1.0 (+https://stripe.com/docs/webhooks)" 0.054
+198.51.100.44 - - [19/Oct/2025:16:00:14 +0000] "GET /api/v1/notifications HTTP/1.1" 401 88 "https://example.com/notifications" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.011
+203.0.113.45 - - [19/Oct/2025:16:00:15 +0000] "GET /reports/usage.csv HTTP/1.1" 403 102 "-" "Wget/1.21.1" 0.062
+198.51.100.23 - - [19/Oct/2025:16:00:16 +0000] "GET /api/v1/users?role=admin HTTP/1.1" 200 1283 "https://example.com/admin" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.097
+192.0.2.15 - - [19/Oct/2025:16:00:17 +0000] "GET /api/v1/products/featured HTTP/1.1" 200 2758 "-" "python-requests/2.31.0" 0.119
+198.51.100.23 - - [19/Oct/2025:16:00:18 +0000] "PATCH /api/v1/users/678 HTTP/1.1" 422 210 "https://example.com/profile" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.402
+203.0.113.12 - - [19/Oct/2025:16:00:19 +0000] "GET /api/v1/users/999/activity HTTP/1.1" 200 4094 "https://example.com/user" "Mozilla/5.0 (X11; Linux x86_64)" 0.156
+10.2.1.11 - - [19/Oct/2025:16:00:20 +0000] "OPTIONS /api/v1/ HTTP/1.1" 204 0 "-" "curl/7.79.1" 0.001
+198.51.100.102 - - [19/Oct/2025:16:00:21 +0000] "GET /download/report.pdf HTTP/1.1" 200 423987 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.451
+203.0.113.90 - - [19/Oct/2025:16:00:22 +0000] "POST /api/v1/feedback HTTP/1.1" 201 34 "-" "Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X)" 0.086
+192.0.2.200 - - [19/Oct/2025:16:00:23 +0000] "GET /api/v1/stats HTTP/1.1" 200 763 "https://dashboard.example.com" "Prometheus/2.41.0" 0.015
+198.51.100.23 - - [19/Oct/2025:16:00:24 +0000] "GET /api/v1/users?sort=created_at&dir=desc HTTP/1.1" 200 11345 "https://example.com/admin" "python-requests/2.31.0" 0.274
+203.0.113.77 - - [19/Oct/2025:16:00:25 +0000] "GET /robots.txt HTTP/1.1" 200 68 "-" "Bingbot/2.0" 0.002
+192.0.2.12 - - [19/Oct/2025:16:00:26 +0000] "GET /api/v1/session/extend HTTP/1.1" 200 24 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.036
+198.51.100.111 - - [19/Oct/2025:16:00:27 +0000] "GET /api/v1/products/123/reviews HTTP/1.1" 200 987 "https://example.com/products/123" "python-requests/2.31.0" 0.132
+203.0.113.45 - - [19/Oct/2025:16:00:28 +0000] "GET /admin/rails/info/properties HTTP/1.1" 404 154 "-" "Mozilla/5.0 (compatible)" 0.009
+10.1.7.7 - - [19/Oct/2025:16:00:29 +0000] "POST /api/v1/items HTTP/1.1" 201 132 "https://example.com/new" "curl/7.79.1" 0.198
+198.51.100.23 - - [19/Oct/2025:16:00:30 +0000] "GET /api/v1/users/345/permissions HTTP/1.1" 200 512 "-" "python-requests/2.31.0" 0.073
+203.0.113.25 - - [19/Oct/2025:16:00:31 +0000] "GET /api/v1/health/checks HTTP/1.1" 200 15 "-" "ELB-HealthChecker/2.0" 0.004
+192.0.2.18 - - [19/Oct/2025:16:00:32 +0000] "GET /search?q=error+handling HTTP/1.1" 200 14923 "https://example.com/" "Mozilla/5.0 (X11; Linux x86_64)" 0.141
+203.0.113.80 - - [19/Oct/2025:16:00:33 +0000] "PUT /api/v1/settings/theme HTTP/1.1" 204 0 "https://example.com/settings" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.200
+198.51.100.150 - - [19/Oct/2025:16:00:34 +0000] "GET /api/v1/users/1/sessions HTTP/1.1" 200 64 "https://example.com/profile" "python-requests/2.31.0" 0.045
+203.0.113.12 - - [19/Oct/2025:16:00:35 +0000] "GET /api/v1/metrics/prometheus HTTP/1.1" 200 923 "-" "Prometheus/2.41.0" 0.010
+198.51.100.23 - - [19/Oct/2025:16:00:36 +0000] "POST /api/v1/users/345/avatar HTTP/1.1" 413 123 "-" "curl/7.79.1" 0.950
+192.0.2.66 - - [19/Oct/2025:16:00:37 +0000] "GET /account/settings HTTP/1.1" 200 9423 "https://example.com/" "Mozilla/5.0 (X11; Linux x86_64)" 0.241
+203.0.113.22 - - [19/Oct/2025:16:00:38 +0000] "GET /api/v1/health/db HTTP/1.1" 200 34 "-" "ELB-HealthChecker/2.0" 0.006
+198.51.100.23 - - [19/Oct/2025:16:00:39 +0000] "GET /api/v1/users?search=engstrom HTTP/1.1" 200 5 "https://example.com/admin" "python-requests/2.31.0" 0.052
+127.0.0.1 - - [19/Oct/2025:16:00:40 +0000] "GET /internal/debug/vars HTTP/1.1" 200 4352 "-" "Go-http-client/1.1" 0.007
+203.0.113.99 - - [19/Oct/2025:16:00:41 +0000] "GET /old-route HTTP/1.1" 301 154 "-" "Mozilla/5.0 (compatible)" 0.006
+198.51.100.23 - - [19/Oct/2025:16:00:42 +0000] "GET /api/v1/users/345/sessions HTTP/1.1" 200 124 "https://example.com/app" "python-requests/2.31.0" 0.062
+192.0.2.55 - - [19/Oct/2025:16:00:43 +0000] "GET /blog/2025/10/why-logs-matter HTTP/1.1" 200 11234 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.132
+203.0.113.61 - - [19/Oct/2025:16:00:44 +0000] "POST /api/v1/subscribe HTTP/1.1" 201 25 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)" 0.077
+198.51.100.23 - - [19/Oct/2025:16:00:45 +0000] "GET /api/v1/usage?from=2025-10-18&to=2025-10-19 HTTP/1.1" 200 23456 "https://example.com/reports" "python-requests/2.31.0" 0.652
+192.0.2.12 - - [19/Oct/2025:16:00:46 +0000] "GET /status HTTP/1.1" 200 48 "-" "curl/7.68.0" 0.003
+203.0.113.45 - - [19/Oct/2025:16:00:47 +0000] "GET /assets/js/bundle.9c8.js HTTP/1.1" 200 452312 "https://example.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.515
+198.51.100.23 - - [19/Oct/2025:16:00:48 +0000] "GET /api/v1/alerts HTTP/1.1" 200 182 "https://example.com/alerts" "python-requests/2.31.0" 0.095
+192.0.2.88 - - [19/Oct/2025:16:00:49 +0000] "POST /api/v1/items/314/like HTTP/1.1" 204 0 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.040
+203.0.113.45 - - [19/Oct/2025:16:00:50 +0000] "GET /api/v1/export?format=csv HTTP/1.1" 202 12 "https://example.com/reports" "curl/7.79.1" 0.422
+198.51.100.7 - - [19/Oct/2025:16:00:51 +0000] "GET /login HTTP/1.1" 200 4332 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.180
+192.0.2.33 - - [19/Oct/2025:16:00:52 +0000] "POST /api/v1/login HTTP/1.1" 401 90 "-" "python-requests/2.31.0" 0.065
+203.0.113.45 - - [19/Oct/2025:16:00:53 +0000] "GET /profile HTTP/1.1" 200 8921 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.197
+198.51.100.23 - - [19/Oct/2025:16:00:54 +0000] "GET /api/v1/users/345/notifications HTTP/1.1" 200 31 "https://example.com/notifications" "python-requests/2.31.0" 0.029
+203.0.113.12 - - [19/Oct/2025:16:00:55 +0000] "GET /sitemap.xml HTTP/1.1" 200 687 "-" "Mozilla/5.0 (compatible; bingbot/2.0)" 0.012
+192.0.2.47 - - [19/Oct/2025:16:00:56 +0000] "PUT /api/v1/cart/42/item/314 HTTP/1.1" 200 78 "https://example.com/cart" "curl/7.79.1" 0.099
+198.51.100.23 - - [19/Oct/2025:16:00:57 +0000] "GET /api/v1/roles HTTP/1.1" 200 13 "https://example.com/admin" "python-requests/2.31.0" 0.032
+203.0.113.90 - - [19/Oct/2025:16:00:58 +0000] "GET /download/installer.sh HTTP/1.1" 200 20456 "-" "Wget/1.21.1" 0.224
+192.0.2.88 - - [19/Oct/2025:16:00:59 +0000] "DELETE /api/v1/sessions/938 HTTP/1.1" 204 0 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.043
+198.51.100.23 - - [19/Oct/2025:16:01:00 +0000] "POST /api/v1/notifications/mark-read HTTP/1.1" 200 6 "-" "python-requests/2.31.0" 0.038
+203.0.113.45 - - [19/Oct/2025:16:01:01 +0000] "GET /api/v1/logs?level=error HTTP/1.1" 200 3456 "https://example.com/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.501
+192.0.2.12 - - [19/Oct/2025:16:01:02 +0000] "GET /api/v1/metrics/summary HTTP/1.1" 200 234 "-" "Prometheus/2.41.0" 0.008
+198.51.100.23 - - [19/Oct/2025:16:01:03 +0000] "GET /api/v1/reports/daily?date=2025-10-18 HTTP/1.1" 200 12938 "https://example.com/reports" "python-requests/2.31.0" 0.401
+203.0.113.77 - - [19/Oct/2025:16:01:04 +0000] "GET /status/uptime HTTP/1.1" 200 24 "-" "ELB-HealthChecker/2.0" 0.002
+192.0.2.33 - - [19/Oct/2025:16:01:05 +0000] "POST /api/v1/cart/checkout HTTP/1.1" 402 128 "-" "curl/7.79.1" 0.942
+198.51.100.23 - - [19/Oct/2025:16:01:06 +0000] "GET /api/v1/users/345/preferences HTTP/1.1" 200 412 "https://example.com/settings" "python-requests/2.31.0" 0.071
+203.0.113.12 - - [19/Oct/2025:16:01:07 +0000] "GET /metrics/cpu HTTP/1.1" 200 68 "-" "Prometheus/2.41.0" 0.005
+192.0.2.90 - - [19/Oct/2025:16:01:08 +0000] "GET /help HTTP/1.1" 200 9876 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.163
+203.0.113.45 - - [19/Oct/2025:16:01:09 +0000] "GET /api/v1/feature-flag HTTP/1.1" 200 3 "https://example.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.019
+198.51.100.23 - - [19/Oct/2025:16:01:10 +0000] "PATCH /api/v1/users/345/password HTTP/1.1" 204 0 "-" "python-requests/2.31.0" 0.289
+10.2.3.14 - - [19/Oct/2025:16:01:11 +0000] "GET /internal/sentry/health HTTP/1.1" 200 34 "-" "curl/7.68.0" 0.004
+192.0.2.47 - - [19/Oct/2025:16:01:12 +0000] "GET /assets/fonts/Roboto.woff2 HTTP/1.1" 200 54321 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.023
+198.51.100.23 - - [19/Oct/2025:16:01:13 +0000] "GET /api/v1/sessions/current HTTP/1.1" 200 29 "-" "python-requests/2.31.0" 0.022
+203.0.113.99 - - [19/Oct/2025:16:01:14 +0000] "GET /old-api/v1/data HTTP/1.1" 410 12 "-" "python-requests/2.31.0" 0.007
+192.0.2.12 - - [19/Oct/2025:16:01:15 +0000] "GET /admin/healthz HTTP/1.1" 200 21 "-" "ELB-HealthChecker/2.0" 0.003
+198.51.100.23 - - [19/Oct/2025:16:01:16 +0000] "GET /api/v1/users?role=manager HTTP/1.1" 200 62 "-" "python-requests/2.31.0" 0.049
+203.0.113.61 - - [19/Oct/2025:16:01:17 +0000] "POST /api/v1/report/generate HTTP/1.1" 202 18 "https://example.com/reports" "curl/7.79.1" 0.701
+192.0.2.18 - - [19/Oct/2025:16:01:18 +0000] "GET /api/v1/liveness HTTP/1.1" 200 6 "-" "ELB-HealthChecker/2.0" 0.001
+198.51.100.23 - - [19/Oct/2025:16:01:19 +0000] "GET /api/v1/teams HTTP/1.1" 200 29 "https://example.com/teams" "python-requests/2.31.0" 0.033
+203.0.113.45 - - [19/Oct/2025:16:01:20 +0000] "GET /api/v1/files/abcd1234 HTTP/1.1" 404 78 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.014
+192.0.2.66 - - [19/Oct/2025:16:01:21 +0000] "GET /legal/privacy HTTP/1.1" 200 2213 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.053
+198.51.100.23 - - [19/Oct/2025:16:01:22 +0000] "GET /api/v1/metrics/errors HTTP/1.1" 200 434 "https://example.com/admin" "python-requests/2.31.0" 0.018
+203.0.113.12 - - [19/Oct/2025:16:01:23 +0000] "HEAD /api/v1/users HTTP/1.1" 200 0 "-" "python-requests/2.31.0" 0.003
+192.0.2.33 - - [19/Oct/2025:16:01:24 +0000] "POST /api/v1/feedback HTTP/1.1" 422 140 "-" "curl/7.79.1" 0.158
+198.51.100.23 - - [19/Oct/2025:16:01:25 +0000] "GET /api/v1/billing/invoices HTTP/1.1" 200 912 "https://example.com/billing" "python-requests/2.31.0" 0.213
+203.0.113.45 - - [19/Oct/2025:16:01:26 +0000] "GET /api/v1/logs?limit=100 HTTP/1.1" 200 28432 "https://example.com/admin" "Mozilla/5.0 (Windows NT 10.0;Win64; x64)" 0.512
+192.0.2.12 - - [19/Oct/2025:16:01:27 +0000] "GET /healthz HTTP/1.1" 200 18 "-" "ELB-HealthChecker/2.0" 0.002
+198.51.100.23 - - [19/Oct/2025:16:01:28 +0000] "POST /api/v1/sso/callback HTTP/1.1" 302 0 "https://auth.example.com" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" 0.448
+203.0.113.77 - - [19/Oct/2025:16:01:29 +0000] "GET /status/ping HTTP/1.1" 200 8 "-" "ELB-HealthChecker/2.0" 0.001
+198.51.100.23 - - [19/Oct/2025:16:01:30 +0000] "GET /api/v1/notifications/unread HTTP/1.1" 200 7 "-" "python-requests/2.31.0" 0.017
+192.0.2.88 - - [19/Oct/2025:16:01:31 +0000] "GET /assets/img/hero.jpg HTTP/1.1" 200 452389 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.085
+203.0.113.45 - - [19/Oct/2025:16:01:32 +0000] "DELETE /api/v1/users/999 HTTP/1.1" 403 98 "-" "curl/7.79.1" 0.114
+198.51.100.23 - - [19/Oct/2025:16:01:33 +0000] "GET /api/v1/organization HTTP/1.1" 200 754 "https://example.com/org" "python-requests/2.31.0" 0.039
+192.0.2.12 - - [19/Oct/2025:16:01:34 +0000] "GET /metrics/memory HTTP/1.1" 200 77 "-" "Prometheus/2.41.0" 0.006
+203.0.113.12 - - [19/Oct/2025:16:01:35 +0000] "GET /api/v1/search?q=rate+limit HTTP/1.1" 429 84 "-" "python-requests/2.31.0" 0.001
+198.51.100.23 - - [19/Oct/2025:16:01:36 +0000] "GET /api/v1/users/123/activities HTTP/1.1" 200 217 "-" "python-requests/2.31.0" 0.067
+203.0.113.45 - - [19/Oct/2025:16:01:37 +0000] "POST /api/v1/webhook/deploy HTTP/1.1" 204 0 "-" "GitHub-Hookshot/1.0" 0.031
+192.0.2.47 - - [19/Oct/2025:16:01:38 +0000] "GET /contact HTTP/1.1" 200 4532 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.129
+198.51.100.23 - - [19/Oct/2025:16:01:39 +0000] "GET /api/v1/feature-toggles HTTP/1.1" 200 7 "https://example.com/admin" "python-requests/2.31.0" 0.021
+203.0.113.99 - - [19/Oct/2025:16:01:40 +0000] "GET /legacy/download.zip HTTP/1.1" 200 987654 "-" "Wget/1.21.1" 0.934
+192.0.2.12 - - [19/Oct/2025:16:01:41 +0000] "GET /.well-known/security.txt HTTP/1.1" 200 89 "-" "Mozilla/5.0 (compatible)" 0.003
+198.51.100.23 - - [19/Oct/2025:16:01:42 +0000] "GET /api/v1/keys HTTP/1.1" 200 16 "-" "python-requests/2.31.0" 0.012
+203.0.113.45 - - [19/Oct/2025:16:01:43 +0000] "GET /api/v1/usage/peak HTTP/1.1" 200 128 "https://example.com/analytics" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.408
+192.0.2.66 - - [19/Oct/2025:16:01:44 +0000] "GET /terms HTTP/1.1" 200 1334 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.037
+198.51.100.23 - - [19/Oct/2025:16:01:45 +0000] "GET /api/v1/sessions/active HTTP/1.1" 200 21 "-" "python-requests/2.31.0" 0.014
+203.0.113.12 - - [19/Oct/2025:16:01:46 +0000] "POST /api/v1/search/index HTTP/1.1" 202 20 "-" "curl/7.79.1" 0.451
+192.0.2.88 - - [19/Oct/2025:16:01:47 +0000] "GET /api/v1/products/top-rated HTTP/1.1" 200 5461 "https://example.com/" "Mozilla/5.0 (X11; Linux x86_64)" 0.149
+203.0.113.45 - - [19/Oct/2025:16:01:48 +0000] "GET /api/v1/accounts/555/balance HTTP/1.1" 200 24 "https://example.com/billing" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.037
+198.51.100.23 - - [19/Oct/2025:16:01:49 +0000] "GET /api/v1/patches HTTP/1.1" 200 3 "-" "python-requests/2.31.0" 0.002
+192.0.2.12 - - [19/Oct/2025:16:01:50 +0000] "GET /metrics/disk HTTP/1.1" 200 90 "-" "Prometheus/2.41.0" 0.006
+203.0.113.45 - - [19/Oct/2025:16:01:51 +0000] "GET /api/v1/logs/errors?since=1h HTTP/1.1" 200 1190 "https://example.com/admin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.489
+198.51.100.23 - - [19/Oct/2025:16:01:52 +0000] "POST /api/v1/users/789/verify HTTP/1.1" 200 12 "-" "python-requests/2.31.0" 0.081
+192.0.2.47 - - [19/Oct/2025:16:01:53 +0000] "GET /explore HTTP/1.1" 200 9930 "-" "Mozilla/5.0 (X11; Linux x86_64)" 0.205
+203.0.113.12 - - [19/Oct/2025:16:01:54 +0000] "GET /api/v1/metrics/network HTTP/1.1" 200 61 "-" "Prometheus/2.41.0" 0.007
+198.51.100.23 - - [19/Oct/2025:16:01:55 +0000] "GET /api/v1/oauth/providers HTTP/1.1" 200 9 "-" "python-requests/2.31.0" 0.011
+192.0.2.33 - - [19/Oct/2025:16:01:56 +0000] "POST /api/v1/checkout/confirm HTTP/1.1" 200 74 "-" "curl/7.79.1" 0.932
+203.0.113.45 - - [19/Oct/2025:16:01:57 +0000] "GET /api/v1/retention?cohort=2025-09 HTTP/1.1" 200 1024 "https://example.com/analytics" "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" 0.736
+198.51.100.23 - - [19/Oct/2025:16:01:58 +0000] "HEAD /api/v1/health HTTP/1.1" 200 0 "-" "python-requests/2.31.0" 0.002
+192.0.2.12 - - [19/Oct/2025:16:01:59 +0000] "GET /status/version HTTP/1.1" 200 14 "-" "ELB-HealthChecker/2.0" 0.003
