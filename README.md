@@ -7,7 +7,6 @@ A small Go CLI tool to archive logs by compressing them into a timestamped tar.g
 - Skips files that look already compressed (.gz, .tgz, .tar.gz).
 - Stores archives in a subdirectory named `archives` (or a custom destination).
 - Appends an entry to `archive_history.log` with timestamp, archive name, file count and total bytes.
-- Optionally remove original files after successful archiving.
 
 ## Build
 
@@ -27,7 +26,6 @@ Basic usage:
 Options:
 
 - `-dest <dir>` : optional destination directory (default: `<log-dir>/archives`)
-- `-remove` : remove original files after they are archived
 - `-v` : verbose logging
 
 Examples:
@@ -38,9 +36,6 @@ sudo ./log-archive /var/log
 
 # specify a different destination
 sudo ./log-archive -dest /tmp/my-logs /var/log
-
-# archive and remove original files
-sudo ./log-archive -remove /var/log
 
 # verbose mode
 sudo ./log-archive -v /var/log
