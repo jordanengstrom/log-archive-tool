@@ -24,7 +24,9 @@ func main() {
 	destFlag := flag.String("dest", "", "optional destination directory (default: <log-dir>/archives)")
 	verbose := flag.Bool("v", false, "enable verbose logging")
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), "Usage: %s [options] <log-directory>\n\nOptions:\n", os.Args[0])
+		if _, err := fmt.Fprintf(flag.CommandLine.Output(), "Usage: %s [options] <log-directory>\n\nOptions:\n", os.Args[0]); err != nil {
+			log.Printf("warning: failed to write usage: %v", err)
+		}
 		flag.PrintDefaults()
 	}
 	flag.Parse()
