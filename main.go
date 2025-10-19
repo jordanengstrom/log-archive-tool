@@ -15,7 +15,6 @@ import (
 
 const (
 	defaultArchiveDirName = "archives"
-	historyFileName       = "archive_history.log"
 	timeFormatFilename    = "20060102_150405"
 	timeFormatHuman       = "2006-01-02 15:04:05 MST"
 )
@@ -76,10 +75,6 @@ func main() {
 	if *verbose {
 		log.Printf("archive created: %s", archivePath)
 		log.Printf("files archived: %d, total bytes: %d", filesArchived, totalBytes)
-	}
-
-	if err := appendHistory(destDir, archivePath, filesArchived, totalBytes); err != nil {
-		log.Printf("warning: failed to append to history file: %v", err)
 	}
 
 	fmt.Printf("Archive complete: %s\n", archivePath)
@@ -148,13 +143,6 @@ func createArchive(srcDir, destDir string, verbose bool) (archivePath string, fi
 		if strings.HasSuffix(lname, ".gz") || strings.HasSuffix(lname, ".tgz") || strings.HasSuffix(lname, ".tar.gz") {
 			if verbose {
 				log.Printf("skipping already compressed file: %s", name)
-			}
-			continue
-		}
-		// skip the history file if present in same dir (defensive)
-		if name == historyFileName {
-			if verbose {
-				log.Printf("skipping history file: %s", name)
 			}
 			continue
 		}
@@ -238,23 +226,4 @@ func createArchive(srcDir, destDir string, verbose bool) (archivePath string, fi
 	}
 
 	return
-}
-
-// appendHistory writes an entry into a history file in destDir to record the archive action.
-func appendHistory(destDir, archivePath string, files int, totalBytes int64) error {
-	historyPath := filepath.Join(destDir, historyFileName)
-	f, err := os.OpenFile(historyPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
-	if err != nil {
-		return fmt.Errorf("open history file: %w", err)
-	}
-
-	line := fmt.Sprintf("%s\tarchive=%s\tfiles=%d\ttotal_bytes=%d\n", time.Now().Format(timeFormatHuman), filepath.Base(archivePath), files, totalBytes)
-	if _, err := f.WriteString(line); err != nil {
-		_ = f.Close()
-		return fmt.Errorf("write history: %w", err)
-	}
-	if cerr := f.Close(); cerr != nil {
-		return fmt.Errorf("close history file: %w", cerr)
-	}
-	return nil
 }
