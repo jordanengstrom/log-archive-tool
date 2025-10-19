@@ -21,7 +21,6 @@ const (
 )
 
 func main() {
-	removeOriginals := flag.Bool("remove", false, "remove original files after successful archive")
 	destFlag := flag.String("dest", "", "optional destination directory (default: <log-dir>/archives)")
 	verbose := flag.Bool("v", false, "enable verbose logging")
 	flag.Usage = func() {
@@ -37,7 +36,6 @@ func main() {
 
 	srcDir := flag.Arg(0)
 	if !filepath.IsAbs(srcDir) {
-		// convert to absolute for consistent behavior
 		abs, err := filepath.Abs(srcDir)
 		if err == nil {
 			srcDir = abs
@@ -66,10 +64,9 @@ func main() {
 	if *verbose {
 		log.Printf("source directory: %s\n", srcDir)
 		log.Printf("destination directory: %s\n", destDir)
-		log.Printf("remove originals: %v\n", *removeOriginals)
 	}
 
-	archivePath, filesArchived, totalBytes, err := createArchive(srcDir, destDir, *removeOriginals, *verbose)
+	archivePath, filesArchived, totalBytes, err := createArchive(srcDir, destDir, *verbose)
 	if err != nil {
 		log.Fatalf("failed to create archive: %v", err)
 	}
@@ -88,41 +85,45 @@ func main() {
 
 // createArchive collects regular files in srcDir (non-recursive) and writes them into a tar.gz
 // placed in destDir. It skips files already in destDir and files that look compressed (.gz, .tgz, .tar.gz).
-// If removeOriginals is true, it deletes a file after successfully adding it to the archive.
-func createArchive(srcDir, destDir string, removeOriginals bool, verbose bool) (string, int, int64, error) {
+func createArchive(srcDir, destDir string, verbose bool) (archivePath string, filesArchived int, totalBytes int64, retErr error) {
 	// ensure destDir exists
 	if err := os.MkdirAll(destDir, 0755); err != nil {
-		return "", 0, 0, fmt.Errorf("cannot create destination dir %s: %w", destDir, err)
+		retErr = fmt.Errorf("cannot create destination dir %s: %w", destDir, err)
+		return
 	}
 
 	now := time.Now()
 	ts := now.Format(timeFormatFilename)
 	archiveName := fmt.Sprintf("logs_archive_%s.tar.gz", ts)
-	archivePath := filepath.Join(destDir, archiveName)
+	archivePath = filepath.Join(destDir, archiveName)
 
 	tmpArchivePath := archivePath + ".tmp"
 
 	outFile, err := os.Create(tmpArchivePath)
 	if err != nil {
-		return "", 0, 0, fmt.Errorf("failed to create archive file: %w", err)
+		retErr = fmt.Errorf("failed to create archive file: %w", err)
+		return
 	}
+
+	// ensure temporary file is removed on error
 	defer func() {
-		outFile.Close()
-		// if an error occurred, cleanup tmp file
+		if retErr != nil {
+			if cerr := outFile.Close(); cerr != nil {
+				log.Printf("warning: error closing tmp archive file: %v", cerr)
+			}
+			if remErr := os.Remove(tmpArchivePath); remErr != nil {
+				log.Printf("warning: failed to remove tmp archive %s: %v", tmpArchivePath, remErr)
+			}
+		}
 	}()
 
 	gw := gzip.NewWriter(outFile)
-	defer gw.Close()
-
 	tw := tar.NewWriter(gw)
-	defer tw.Close()
-
-	var filesArchived int
-	var totalBytes int64
 
 	entries, err := os.ReadDir(srcDir)
 	if err != nil {
-		return "", 0, 0, fmt.Errorf("failed to list directory %s: %w", srcDir, err)
+		retErr = fmt.Errorf("failed to list directory %s: %w", srcDir, err)
+		return
 	}
 
 	for _, entry := range entries {
@@ -179,7 +180,9 @@ func createArchive(srcDir, destDir string, removeOriginals bool, verbose bool) (
 		// prepare header
 		hdr, err := tar.FileInfoHeader(info, "")
 		if err != nil {
-			f.Close()
+			if cerr := f.Close(); cerr != nil {
+				log.Printf("warning: error closing %s: %v", fullPath, cerr)
+			}
 			log.Printf("warning: unable to create tar header for %s: %v", fullPath, err)
 			continue
 		}
@@ -187,13 +190,18 @@ func createArchive(srcDir, destDir string, removeOriginals bool, verbose bool) (
 		hdr.Name = name
 
 		if err := tw.WriteHeader(hdr); err != nil {
-			f.Close()
+			if cerr := f.Close(); cerr != nil {
+				log.Printf("warning: error closing %s: %v", fullPath, cerr)
+			}
 			log.Printf("warning: unable to write tar header for %s: %v", fullPath, err)
 			continue
 		}
 
 		n, err := io.Copy(tw, f)
-		f.Close()
+		// ensure file is closed and note any close error
+		if cerr := f.Close(); cerr != nil {
+			log.Printf("warning: error closing %s: %v", fullPath, cerr)
+		}
 		if err != nil {
 			log.Printf("warning: error writing file %s into archive: %v", fullPath, err)
 			continue
@@ -205,39 +213,29 @@ func createArchive(srcDir, destDir string, removeOriginals bool, verbose bool) (
 		if verbose {
 			log.Printf("archived %s (%d bytes)", name, n)
 		}
-
-		if removeOriginals {
-			if err := os.Remove(fullPath); err != nil {
-				log.Printf("warning: failed to remove original %s: %v", fullPath, err)
-			} else if verbose {
-				log.Printf("removed original file: %s", fullPath)
-			}
-		}
 	}
 
-	// close writers to flush
-	if err := tw.Close(); err != nil {
-		outFile.Close()
-		os.Remove(tmpArchivePath)
-		return "", filesArchived, totalBytes, fmt.Errorf("error closing tar writer: %w", err)
+	// close writers to flush and check errors
+	if cerr := tw.Close(); cerr != nil {
+		retErr = fmt.Errorf("error closing tar writer: %w", cerr)
+		return
 	}
-	if err := gw.Close(); err != nil {
-		outFile.Close()
-		os.Remove(tmpArchivePath)
-		return "", filesArchived, totalBytes, fmt.Errorf("error closing gzip writer: %w", err)
+	if cerr := gw.Close(); cerr != nil {
+		retErr = fmt.Errorf("error closing gzip writer: %w", cerr)
+		return
 	}
-	if err := outFile.Close(); err != nil {
-		os.Remove(tmpArchivePath)
-		return "", filesArchived, totalBytes, fmt.Errorf("error closing output file: %w", err)
+	if cerr := outFile.Close(); cerr != nil {
+		retErr = fmt.Errorf("error closing output file: %w", cerr)
+		return
 	}
 
 	// atomically rename tmp to final
 	if err := os.Rename(tmpArchivePath, archivePath); err != nil {
-		os.Remove(tmpArchivePath)
-		return "", filesArchived, totalBytes, fmt.Errorf("failed to rename archive to final path: %w", err)
+		retErr = fmt.Errorf("failed to rename archive to final path: %w", err)
+		return
 	}
 
-	return archivePath, filesArchived, totalBytes, nil
+	return
 }
 
 // appendHistory writes an entry into a history file in destDir to record the archive action.
@@ -247,12 +245,14 @@ func appendHistory(destDir, archivePath string, files int, totalBytes int64) err
 	if err != nil {
 		return fmt.Errorf("open history file: %w", err)
 	}
-	defer f.Close()
 
-	now := time.Now()
-	line := fmt.Sprintf("%s\tarchive=%s\tfiles=%d\ttotal_bytes=%d\n", now.Format(timeFormatHuman), filepath.Base(archivePath), files, totalBytes)
+	line := fmt.Sprintf("%s\tarchive=%s\tfiles=%d\ttotal_bytes=%d\n", time.Now().Format(timeFormatHuman), filepath.Base(archivePath), files, totalBytes)
 	if _, err := f.WriteString(line); err != nil {
+		_ = f.Close()
 		return fmt.Errorf("write history: %w", err)
+	}
+	if cerr := f.Close(); cerr != nil {
+		return fmt.Errorf("close history file: %w", cerr)
 	}
 	return nil
 }
