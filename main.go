@@ -14,14 +14,14 @@ import (
 )
 
 const (
-	defaultArchiveDirName = "archives"
-	historyFileName       = "archive_history.log"
-	timeFormatFilename    = "20060102_150405"
-	timeFormatHuman       = "2006-01-02 15:04:05 MST"
+	historyFileName    = "archive_history.log"
+	archiveSuffix      = "_archive"
+	timeFormatFilename = "20060102_150405"
+	timeFormatHuman    = "2006-01-02 15:04:05 MST"
 )
 
 func main() {
-	destFlag := flag.String("dest", "", "optional destination directory (default: <log-dir>/archives)")
+	destFlag := flag.String("dest", "", "optional destination directory (default: sibling directory named <log-directory>_archive)")
 	verbose := flag.Bool("v", false, "enable verbose logging")
 	flag.Usage = func() {
 		if _, err := fmt.Fprintf(flag.CommandLine.Output(), "Usage: %s [options] <log-directory>\n\nOptions:\n", os.Args[0]); err != nil {
@@ -38,8 +38,7 @@ func main() {
 
 	srcDir := flag.Arg(0)
 	if !filepath.IsAbs(srcDir) {
-		abs, err := filepath.Abs(srcDir)
-		if err == nil {
+		if abs, err := filepath.Abs(srcDir); err == nil {
 			srcDir = abs
 		}
 	}
@@ -54,11 +53,12 @@ func main() {
 
 	destDir := *destFlag
 	if destDir == "" {
-		destDir = filepath.Join(srcDir, defaultArchiveDirName)
+		parent := filepath.Dir(srcDir)
+		base := filepath.Base(srcDir)
+		destDir = filepath.Join(parent, base+archiveSuffix)
 	}
 	if !filepath.IsAbs(destDir) {
-		abs, err := filepath.Abs(destDir)
-		if err == nil {
+		if abs, err := filepath.Abs(destDir); err == nil {
 			destDir = abs
 		}
 	}
@@ -86,7 +86,7 @@ func main() {
 }
 
 // createArchive collects regular files in srcDir (non-recursive) and writes them into a tar.gz
-// placed in destDir. It skips files already in destDir and files that look compressed (.gz, .tgz, .tar.gz).
+// placed in destDir. It skips files that look compressed (.gz, .tgz, .tar.gz).
 func createArchive(srcDir, destDir string, verbose bool) (archivePath string, filesArchived int, totalBytes int64, retErr error) {
 	// ensure destDir exists
 	if err := os.MkdirAll(destDir, 0755); err != nil {
@@ -131,7 +131,7 @@ func createArchive(srcDir, destDir string, verbose bool) (archivePath string, fi
 	for _, entry := range entries {
 		// skip directories
 		if entry.IsDir() {
-			// skip the destination archive directory if it's inside srcDir
+			// skip the destination archive directory if it's inside srcDir (defensive)
 			if entry.Name() == filepath.Base(destDir) {
 				if verbose {
 					log.Printf("skipping archive directory: %s", entry.Name())
@@ -151,7 +151,7 @@ func createArchive(srcDir, destDir string, verbose bool) (archivePath string, fi
 			}
 			continue
 		}
-		// skip the history file if present in same dir (defensive)
+		// defensive: skip history file if present in source dir
 		if name == historyFileName {
 			if verbose {
 				log.Printf("skipping history file: %s", name)
