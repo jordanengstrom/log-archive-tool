@@ -108,7 +108,7 @@ for ff in "${files[@]}"; do
 done
 
 timestamp_human="$(date '+%Y-%m-%d %H:%M:%S %Z')"
-echo "${timestamp_human}  archive=${archive_name}  files=${#files[@]}  total_bytes=${total_bytes}" >> "${dest}/archive_history.log"
+echo "${timestamp_human} archive=${archive_name} files=${#files[@]} total_bytes=${total_bytes}" >> "${dest}/archive_history.log"
 
 echo "Archive complete: ${final_path}"
 exit 0
