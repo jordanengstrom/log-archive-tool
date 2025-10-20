@@ -109,5 +109,3 @@ Possible improvements:
 - Add filters (extensions, age, size).
 - Add dry-run mode.
 - Integrate with logrotate, systemd timers, or cron for scheduled execution.
-
-https://roadmap.sh/projects/log-archive-tool
